@@ -1,0 +1,68 @@
+config:
+  credentials: []
+  project_repos:
+    git.ufz.de/rdm-software/saqc:
+      branch: main
+      repo: https://git.ufz.de/rdm-software/saqc
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: release/1.7.11
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      git.ufz.de/rdm-software/saqc git:
+        commands:
+        - /usr/bin/env sh .sqa/script.cozy-russet-booby.sh
+        container: qc.acc_cozy-aqua-discus
+  QC.Doc:
+    repos:
+      git.ufz.de/rdm-software/saqc find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.gloppy-harlequin-turtle.sh
+        container: qc.doc_crabby-chestnut-eleuth
+      git.ufz.de/rdm-software/saqc git:
+        commands:
+        - /usr/bin/env sh .sqa/script.snippy-cerise-mongoose.sh
+        container: qc.doc_wiggy-silver-rabbit
+      git.ufz.de/rdm-software/saqc markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.pasty-pumpkin-crab.sh
+        container: qc.doc_muggy-corn-jackal
+      git.ufz.de/rdm-software/saqc restructuredtext-lint:
+        commands:
+        - /usr/bin/env sh .sqa/script.grumpy-auburn-tuatara.sh
+        container: qc.doc_foggy-brass-alligator
+  QC.Lic:
+    repos:
+      git.ufz.de/rdm-software/saqc licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.squeaky-zucchini-wombat.sh
+        container: qc.lic_thirsty-celadon-earwig
+  QC.Met:
+    repos:
+      git.ufz.de/rdm-software/saqc cff-converter-python:
+        commands:
+        - /usr/bin/env sh .sqa/script.jumpy-rose-argentino.sh
+        container: qc.met_craggy-rust-dolphin
+  QC.Sec:
+    repos:
+      git.ufz.de/rdm-software/saqc bandit:
+        commands:
+        - /usr/bin/env sh .sqa/script.lumpy-saffron-squid.sh
+        container: qc.sec_sunny-fuchsia-chin
+  QC.Sty:
+    repos:
+      git.ufz.de/rdm-software/saqc flake8:
+        commands:
+        - /usr/bin/env sh .sqa/script.sickly-vermilion-camel.sh
+        container: qc.sty_craggy-peach-vole
+  QC.Ver:
+    repos:
+      git.ufz.de/rdm-software/saqc get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.stealthy-wheat-heron.sh
+        container: qc.ver_leaky-aquamarine-cheetah
+timeout: 5400
