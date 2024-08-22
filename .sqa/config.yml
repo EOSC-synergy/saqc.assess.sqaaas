@@ -5,7 +5,7 @@ config:
       branch: main
       repo: https://git.ufz.de/rdm-software/saqc
     github.com/EOSC-synergy/sqaaas-tooling:
-      branch: release/2.0.0
+      branch: release/2.0.1
       repo: https://github.com/EOSC-synergy/sqaaas-tooling
 environment:
   JPL_DOCKERFORCEBUILD: enabled
@@ -15,28 +15,60 @@ sqa_criteria:
     repos:
       git.ufz.de/rdm-software/saqc git:
         commands:
-        - /usr/bin/env sh .sqa/script.craggy-cinnamon-echidna.sh
-        container: qc.acc_flabby-pear-uguisu
+        - /usr/bin/env sh .sqa/script.sleepy-indigo-baboon.sh
+        container: qc.acc_trippy-chestnut-bongo
   QC.Doc:
     repos:
       git.ufz.de/rdm-software/saqc find_doc_files.py:
         commands:
-        - /usr/bin/env sh .sqa/script.woozy-scarlet-ferret.sh
-        container: qc.doc_tacky-cyan-baboon
+        - /usr/bin/env sh .sqa/script.snappy-seashell-toad.sh
+        container: qc.doc_jumpy-myrtle-tarantula
       git.ufz.de/rdm-software/saqc git:
         commands:
-        - /usr/bin/env sh .sqa/script.silly-lavender-labradoodle.sh
-        container: qc.doc_chewy-platinum-lionfish
+        - /usr/bin/env sh .sqa/script.nerdy-celadon-hyrax.sh
+        container: qc.doc_zippy-grey-octopus
+      git.ufz.de/rdm-software/saqc markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.freaky-rose-barracuda.sh
+        container: qc.doc_chummy-cinnamon-cougar
+      git.ufz.de/rdm-software/saqc restructuredtext-lint:
+        commands:
+        - /usr/bin/env sh .sqa/script.greasy-pink-frise.sh
+        container: qc.doc_slaphappy-cerulean-mayfly
   QC.Lic:
     repos:
       git.ufz.de/rdm-software/saqc licensee:
         commands:
-        - /usr/bin/env sh .sqa/script.sleazy-ruby-rabbit.sh
-        container: qc.lic_geeky-cinnabar-sheep
+        - /usr/bin/env sh .sqa/script.trippy-champagne-mist.sh
+        container: qc.lic_smelly-green-koala
+  QC.Met:
+    repos:
+      git.ufz.de/rdm-software/saqc cff-converter-python:
+        commands:
+        - /usr/bin/env sh .sqa/script.sloppy-brown-eel.sh
+        container: qc.met_gimpy-charcoal-burmese
+  QC.Sec:
+    repos:
+      git.ufz.de/rdm-software/saqc bandit:
+        commands:
+        - /usr/bin/env sh .sqa/script.cranky-corn-hyrax.sh
+        container: qc.sec_trippy-bronze-penguin
+  QC.Sty:
+    repos:
+      git.ufz.de/rdm-software/saqc flake8:
+        commands:
+        - /usr/bin/env sh .sqa/script.hazy-chocolate-walrus.sh
+        container: qc.sty_pasty-seashell-snail
+  QC.Uni:
+    repos:
+      git.ufz.de/rdm-software/saqc pytest:
+        commands:
+        - /usr/bin/env sh .sqa/script.frumpy-wheat-termite.sh
+        container: qc.uni_messy-turquoise-ibis
   QC.Ver:
     repos:
       git.ufz.de/rdm-software/saqc get_git_tags.py:
         commands:
-        - /usr/bin/env sh .sqa/script.crappy-aquamarine-cheetah.sh
-        container: qc.ver_flabby-lime-dane
+        - /usr/bin/env sh .sqa/script.frumpy-jade-fish.sh
+        container: qc.ver_surly-auburn-affenpinscher
 timeout: 5400
